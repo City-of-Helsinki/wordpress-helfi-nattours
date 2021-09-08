@@ -16,8 +16,9 @@ function get_species($terms, $taxonomy = 'default') {
   echo '<div class="species-wrapper">';
     foreach( $terms as $value ):
         $thumb = get_field( 'featured_image', $value->taxonomy . '_' . $value->term_id );
+        $thumb_img = $thumb['sizes']['location_thumb'] ?? '';
       echo '<a href="' . get_term_link($value, $taxonomy) . '" class="link-component">';
-        echo '<div class="link-component__img" style="background-image: url(' . $thumb['sizes']['location_thumb'] ?? '' . '); background-color: gray;"></div>';
+        echo '<div class="link-component__img" style="background-image: url(' .  $thumb_img . '); background-color: gray;"></div>';
         echo '<div class="link-component__text">';
           echo '<span class="h7">' . $value->name . '</span>';
           if ( get_field( 'is_rare', $value->taxonomy . '_' . $value->term_id ) ) :
