@@ -74,26 +74,23 @@ if ( \UTILS()->get_city() === 'helsinki' ) {
 <?php wp_footer(); ?>
 <!-- <script src="http://code.responsivevoice.org/responsivevoice.js"></script> -->
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'
-      rel='stylesheet'/>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet'/>
 <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.62.0/dist/L.Control.Locate.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.62.0/dist/L.Control.Locate.min.css">
-<!-- Matomo -->
-<script type="text/javascript">
-  var _paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["setCookieDomain", "*.citynature.eu"]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//analytics.hel.ninja/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '26']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
+
+<script>
+window.addEventListener('load', function(event) {
+	var _maps = window.WPLeafletMapPlugin.maps;
+	if ( _maps.length ) {
+		for (var i = 0; i < _maps.length; i++) {
+			_maps[i].addControl(new window.L.Control.Fullscreen());
+			_maps[i].addControl(new window.L.control.locate({
+				flyTo: true, cacheLocation: true, locateOptions: {enableHighAccuracy: true,}}
+			));
+		}
+	}
+});
 </script>
-<!-- End Matomo Code -->
+
 </body>
 </html>
-
