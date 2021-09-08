@@ -1,0 +1,153 @@
+@mixin placeholder($color: $gray) {
+  ::-webkit-input-placeholder {
+    color: $color;
+    font-weight: 300;
+  }
+  ::-moz-placeholder {
+    color: $color;
+    font-weight: 300;
+  }
+  :-ms-input-placeholder {
+    color: $color;
+    font-weight: 300;
+  }
+}
+
+@mixin image-replace() {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin content-section() {
+  .content {
+    &--left {
+      @include make-xs-column(12, 0);
+      @include make-sm-column(7);
+      margin-top: rem-calc(24);
+    }
+    &--right {
+      @include make-xs-column(12, 0);
+      @include make-sm-column(5);
+      margin-top: rem-calc(18);
+    }
+    &--center {
+      @include make-xs-column(12);
+      @include make-sm-column(8);
+      @include make-sm-column-offset(2);
+      @include make-md-column(6);
+      @include make-md-column-offset(3);
+    }
+
+    &--left-services {
+      margin-top: rem-calc(24);
+      @include make-sm-column(5);
+      @include make-sm-column-push(7);
+    }
+
+    &--right-services {
+      margin-top: rem-calc(18);
+      @include make-sm-column(7);
+      @include make-sm-column-pull(5);
+    }
+  }
+  .text-content {
+    @include make-xs-column(12);
+    padding-bottom: rem-calc(18);
+    .nav-link {
+      display: inline-block;
+      margin-bottom: rem-calc(18);
+      color: $brand-info;
+    }
+    hr {
+      @include make-xs-column(12, 0);
+    }
+  }
+  .graphic-content {
+    @include make-xs-column(12, 0);
+    margin-bottom: rem-calc(36);
+  }
+  // img {
+  //   width: 100%;
+  // }
+}
+
+@mixin modal {
+  @include content-section();
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  overflow-x: hidden;
+
+  &__header-container {
+    flex: none;
+    @include make-xs-column(12, 0);
+    padding-top: rem-calc(24);
+    padding-bottom: rem-calc(24);
+    border-bottom: 1px solid $gray-lighter;
+    margin-bottom: rem-calc(36);
+  }
+  &__header {
+    @include make-xs-column(12);
+    color: $brand-info;
+    text-align: center;
+    > i {
+      float: right;
+    }
+    .close-modal {
+      cursor: pointer;
+    }
+  }
+  .graphic-content {
+    flex: 1;
+  }
+}
+
+@mixin responsive-font($font-size) {
+  font-size: $font-size;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  @media all and (max-width: $screen-xs-max) {
+    font-size: $font-size * 0.7;
+    line-height: 1;
+  }
+}
+
+// Helsinki koro generator mixin for section dividers.
+
+@mixin koro($_style, $_color, $_scale) {
+  $_korosizex: (($_scale/100) * 20px); // repeatable koros are 20px wide
+  $_korosizey: (($_scale/100) * 800px); // repeatable koros are 800px high
+  background-size: $_korosizex $_korosizey; // for IE size must be specified
+
+  @include koro-shape($_style, $_color);
+
+  background-position: top;
+  background-repeat: repeat-x;
+}
+
+// Return repeatable koro svg-shape in desired style and color
+// SVG encoded for cross-browser compatibility with https://codepen.io/jakob-e/pen/doMoML
+
+@mixin koro-shape($_style, $_color) {
+  @if $_style == "beat" {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 20 800' style='enable-background:new 0 0 20 800;' xml:space='preserve'%3E %3Cstyle type='text/css'%3E .kf%7Bfill:%23#{str-slice(inspect($_color), 2)};%7D %3C/style%3E %3Ctitle%3Ekoro-beat-fog-0%3C/title%3E %3Cpath class='kf' d='M800.7,800h0.3H-1'/%3E %3Cpath class='kf' d='M20,800H0V0c2.8,0,3.5,2.3,3.5,2.3l2.8,8.4c0.6,1.5,1.9,2.5,3.6,2.5c2.8,0,3.6-2.5,3.6-2.5s2.8-8.1,2.8-8.2 C17,1,18.3,0,20,0V800z'/%3E %3C/svg%3E");
+  }
+  @else if $_style == "pulse" {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 20 800' style='enable-background:new 0 0 20 800;' xml:space='preserve'%3E %3Cstyle type='text/css'%3E .kf%7Bfill:%23#{str-slice(inspect($_color), 2)};%7D %3C/style%3E %3Ctitle%3Ekoro-pulse-fog-0%3C/title%3E %3Cpath class='kf' d='M0,799.9l800-0.7'/%3E %3Cpath class='kf' d='M0,800h20V0c-5.1,0-5.1,6.4-10,6.4S4.9,0,0,0V800z'/%3E %3C/svg%3E ");
+  }
+  @else if $_style == "storm" {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 20 800' style='enable-background:new 0 0 20 800;' xml:space='preserve'%3E %3Cstyle type='text/css'%3E .kf%7Bfill:%23#{str-slice(inspect($_color), 2)};%7D %3C/style%3E %3Ctitle%3Ekoro-storm-fog-0%3C/title%3E %3Cpath class='kf' d='M20,800V0c-2.3,5.5-8.7,8.1-14.3,5.7C3.1,4.7,1.2,2.6,0,0v800H20z'/%3E %3C/svg%3E ");
+  }
+  @else if $_style == "wave" {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 20 800' style='enable-background:new 0 0 20 800;' xml:space='preserve'%3E %3Cstyle type='text/css'%3E .kf%7Bfill:%23#{str-slice(inspect($_color), 2)};%7D %3C/style%3E %3Ctitle%3Ekoro-wave-fog-0%3C/title%3E %3Cpolygon class='kf' points='0,800 20,800 20,0 9.8,10.1 0,0 '/%3E %3C/svg%3E ");
+  }
+    // Default to "basic" shape
+  @else {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 20 800' style='enable-background:new 0 0 20 800;' xml:space='preserve'%3E %3Cstyle type='text/css'%3E .kf%7Bfill:%23#{str-slice(inspect($_color), 2)};%7D %3C/style%3E %3Ctitle%3Ekoro-basic-fog-0%3C/title%3E %3Cpath class='kf' d='M0,800h800'/%3E %3Cpath class='kf' d='M0,800h20V0c-4.9,0-5,2.6-9.9,2.6S5,0,0,0V800z'/%3E %3C/svg%3E ");
+  }
+}

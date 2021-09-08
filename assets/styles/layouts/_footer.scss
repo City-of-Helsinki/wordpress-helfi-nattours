@@ -1,0 +1,136 @@
+footer {
+  margin-top: 4rem;
+  background-color: #000;
+  color: #FFF;
+  padding-top: 2rem;
+
+  &.front-page-footer {
+    background-color: $color--helsinki-fog;
+    padding-bottom: 2rem;
+  }
+
+  .location-helsinki & {
+    background-color: $color--helsinki-fog;
+    margin-top: 0;
+  }
+
+  .location-tallinn &, .location-tallinna & {
+    background-color: $color--tallinn-blue;
+  }
+
+  .footer-logo-img {
+    width: 20rem;
+    height: auto;
+  }
+
+  .footer__bottom-wrapper {
+    padding: 2rem 0;
+    background-color: #000;
+
+    .location-helsinki & {
+      background-color: $color--helsinki-coat;
+      margin-top: 0;
+    }
+
+    .location-tallinn &, .location-tallinna & {
+      background-color: $color--tallinn-dark-blue;
+    }
+  }
+
+
+  .footer-menu-column {
+    @include make-sm-column(12);
+
+    .footer-links-menu {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+
+      @media screen and (max-width: $screen-xs-max) {
+        flex-direction: column;
+        text-align: center;
+        padding: 0;
+      }
+
+      > li {
+        display: inline-block;
+        padding: 1.5rem;
+
+        @media screen and (min-width: $screen-sm-min) {
+          &:last-child {
+            margin-left: auto;
+          }
+        }
+
+        > a {
+          color: #FFF;
+        }
+      }
+    }
+
+    .footer-bottom-menu {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      width: 100%;
+      justify-content: space-between;
+      padding: 0;
+      margin: 0;
+
+      @media screen and (max-width: $screen-xs-max) {
+        flex-direction: column;
+        text-align: center;
+        padding: 0;
+      }
+
+      > li {
+        display: inline-block;
+        padding: 1.5rem;
+
+        &.bottom-logos {
+          background-color: #FFF;
+
+          @media screen and (max-width: $screen-xs-max) {
+            margin-bottom: 1rem;
+          }
+        }
+
+        &.feedback-item {
+          border: 1px solid #FFF;
+          text-transform: uppercase;
+        }
+
+        > a {
+          color: #FFF;
+        }
+      }
+    }
+  }
+
+  .footer-text-column {
+    @include make-sm-column(12);
+    text-align: center;
+    font-size: 1.4rem;
+  }
+
+  .footer-logo-column {
+    @include make-sm-column(12);
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    text-align: center;
+  }
+}
+
+.helsinki-pulse {
+  @include koro('pulse', $color--helsinki-fog, 200);
+  height: 2rem;
+  margin-top: 4rem;
+}
+
+.some-link {
+  font-size: 2.5rem;
+  padding: 1rem;
+}

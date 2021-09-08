@@ -1,0 +1,64 @@
+.location {
+  &__tabs {
+    @include make-xs-column(12, 0);
+    @include make-sm-column(12);
+    width: auto !important;
+    max-width: 100%;
+    list-style: none;
+    margin: 0;
+    position: absolute;
+    bottom: rem-calc(3);
+    & > li {
+      font-size: rem-calc(24);
+      display: inline-block;
+      padding: rem-calc(0 3 12);
+      @media all and (min-width: $screen-sm-min) {
+        font-size: initial;
+        padding: rem-calc(0 12 12);
+      }
+    }
+    .active {
+      font-weight: bold;
+      border-bottom: 2px solid white;
+    }
+  }
+  &__images {
+    @extend .hidden-xs;
+    img {
+      min-width: 100%;
+    }
+  }
+  &__gallery {
+    .slick-arrow {
+      &:before {
+        color: $brand-primary;
+      }
+    }
+    // @extend .visible-xs;
+    .slick-slide {
+      margin: rem-calc(12);
+      width: auto !important;
+      img {
+        height: 100%;
+      }
+      @media all and (max-width: $screen-xs-max) {
+        height: rem-calc(200);
+      }
+    }
+    .slick-dots {
+      position: static;
+    }
+  }
+  &__home,
+  &__nature,
+  &__services,
+  &__species,
+  &__history {
+    padding-top: rem-calc(18);
+    @extend .container-fluid;
+    @include content-section();
+  }
+  &__species {
+    margin-top: 15px;
+  }
+}

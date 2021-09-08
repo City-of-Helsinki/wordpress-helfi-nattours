@@ -1,0 +1,31 @@
+@import "common/fonts";
+@import "common/settings";
+// Import npm dependencies
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~font-awesome/scss/font-awesome";
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
+// Global
+@import "common/mixins";
+@import "common/global";
+// Components
+@import "components/wp-classes";
+@import "components/buttons";
+@import "components/box";
+@import "components/comments";
+@import "components/forms";
+@import "components/img-caption";
+@import "components/link-component";
+@import "components/tinymce";
+@import "components/logo-wrapper";
+@import "components/front-page-locations";
+// Layouts & pages
+@import "layouts/modals";
+@import "layouts/footer";
+@import "layouts/front";
+@import "layouts/header";
+@import "layouts/location";
+@import "layouts/route";
+@import "layouts/service";
+@import "layouts/taxonomy";
+@import "layouts/page";

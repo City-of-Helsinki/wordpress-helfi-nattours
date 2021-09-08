@@ -1,0 +1,119 @@
+.sidemenu {
+  @include modal();
+
+  &--left {
+    transform: translateX(-100%);
+    transition: 0.5s;
+    .container-fluid {
+      margin: 0 !important;
+    }
+    .language {
+      display: block;
+    }
+    .lang-item {
+      list-style: none;
+      display: inline-block;
+    }
+    .lang-item > a {
+      display: block;
+      margin: rem-calc(30 24 0 0);
+      padding: rem-calc(78 42 24);
+      background-color: #f7f7f7;
+      color: #0072c6;
+    }
+    .current-lang > a {
+      background-color: #0072c6;
+      color: #f7f7f7;
+    }
+  }
+  &--right {
+    transform: translateX(100%);
+    transition: 0.5s;
+    overflow: hidden !important;
+    & > * {
+      margin-bottom: 0 !important;
+    }
+  }
+  &__location {
+    float: left;
+    margin-right: rem-calc(18);
+  }
+  &__all {
+    float: left;
+    color: $brand-info;
+    @media all and (max-width: $screen-xs-max) {
+      float: right;
+    }
+  }
+}
+
+.sidemenu--logged-in {
+  top: 32px;
+}
+
+.filter {
+  @include modal();
+  display: none;
+  &-category {
+    @include make-row();
+    > span {
+      @include make-xs-column(12);
+      margin-bottom: rem-calc(18);
+    }
+  }
+  input[type='checkbox'] {
+    display: none;
+    & + label {
+      @include make-xs-column(4);
+      max-width: rem-calc(210);
+      margin-bottom: rem-calc(36);
+      > span {
+        @include make-xs-column(12, 0);
+        background-color: #f7f7f7;
+        color: #0072c6;
+        border-radius: rem-calc(4);
+        cursor: pointer;
+        text-align: center;
+        font-weight: normal;
+        padding: 35% rem-calc(12);
+      }
+    }
+    &:checked + label > span {
+      background-color: #0072c6;
+      color: #f7f7f7;
+    }
+  }
+  &__btn {
+    position: fixed;
+    bottom: rem-calc(30);
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    width: rem-calc(474);
+    margin: auto;
+    padding: rem-calc(30 0);
+    color: white;
+    background-color: $brand-success;
+    border: none;
+    font-weight: bold;
+  }
+}
+
+.leaflet-popup {
+  // margin-bottom: 0 !important;
+  // min-height: 65px !important;
+  overflow: visible !important;
+  &-content {
+    max-width: 70vw !important;
+    font-size: 16px;
+    strong {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    &-wrapper {
+      border-radius: 0 !important;
+      max-height: 60vh !important;
+      overflow: auto;
+    }
+  }
+}

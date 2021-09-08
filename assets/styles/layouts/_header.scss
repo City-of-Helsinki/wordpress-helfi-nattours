@@ -1,0 +1,98 @@
+.header {
+  @extend .container-fluid;
+  position: relative;
+  padding-bottom: rem-calc(18);
+  letter-spacing: 0.5px;
+  &--main {
+    // padding-top: 25%;
+    height: 100vh;
+    max-height: rem-calc(1200);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    & * {
+      color: white !important;
+    }
+    .link-component {
+      max-width: 400px;
+      margin-top: rem-calc(24);
+      cursor: pointer;
+    }
+    .link-component__text {
+      @include make-xs-column(8);
+      padding-top: 6px;
+    }
+    .link-component__img {
+      @include make-xs-column(4);
+      padding-bottom: 19%;
+    }
+  }
+  &--location {
+    height: 70vh;
+    max-height: rem-calc(900);
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: all 0.3s ease-in;
+    * {
+      color: white !important;
+    }
+  }
+  &--service {
+    padding-top: rem-calc(84);
+    background-color: white;
+    * {
+      color: $brand-info !important;
+    }
+  }
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  &__nav {
+    position: absolute;
+    padding: 1.5rem 0 2.5rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    & > * {
+      color: $brand-info;
+      line-height: $line-height-base;
+    }
+    &__sidemenu {
+      @include make-xs-column(2);
+      @include make-sm-column(4);
+    }
+    &__link {
+      @include make-xs-column(8, 0);
+      @include make-sm-column(4, 0);
+      @media all and (min-width: $screen-sm-min) {
+        text-align: center;
+      }
+    }
+    &__map {
+      @include make-xs-column(2);
+      @include make-sm-column(4);
+      text-align: right;
+    }
+    #leftOpen,
+    #rightOpen {
+      cursor: pointer;
+    }
+  }
+  &__texts {
+    @include make-xs-column(12);
+    width: auto;
+    max-width: 100%;
+    position: absolute;
+    bottom: rem-calc(80);
+    h2 {
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,114 @@
+.front {
+  @extend .container-fluid;
+  @include content-section();
+  &__filter {
+    @include make-xs-column(12);
+    margin-bottom: rem-calc(18);
+    h6 {
+      @include make-xs-column(3, 0);
+      max-width: rem-calc(250);
+      @extend .hidden-xs;
+      margin-bottom: 0;
+    }
+    &__link {
+      float: left;
+      cursor: pointer;
+      .fa {
+        line-height: $line-height-base;
+        // @include make-xs-column(1, 0);
+        color: $brand-info !important;
+        margin-right: rem-calc(12);
+      }
+      a {
+        // @include make-xs-column(11, 0);
+        color: $brand-info !important;
+      }
+    }
+    &-selections {
+      @include make-xs-column(12);
+      margin-bottom: rem-calc(18);
+    }
+    &-value {
+      display: inline-block;
+      padding: rem-calc(6 12);
+      margin: rem-calc(6);
+      color: white;
+      font-size: rem-calc(18);
+      background-color: $brand-info;
+      cursor: pointer;
+      &:after {
+        content: 'x';
+        padding-left: rem-calc(30);
+        font-size: $font-size-base;
+      }
+    }
+  }
+  &__content {
+    @include make-row();
+    margin-bottom: rem-calc(18);
+  }
+  &__city {
+    display: block;
+    color: $brand-info;
+    line-height: 2;
+    margin-top: rem-calc(30);
+  }
+  &__location-list a {
+    color: $brand-info !important;
+  }
+}
+
+.home-page-navigation {
+  background-color: #FFF;
+  color: #000;
+  padding: 1.5rem 0;
+
+  .front-page-lang-switcher {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+
+    > h6 {
+      margin-bottom: 0;
+      color: inherit;
+    }
+
+    > ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      > li {
+        display: inline-block;
+        padding: 0.2rem 1rem;
+
+        &.active {
+          border: 1px solid #000;
+          border-radius: 5px;
+        }
+
+        > a {
+          color: #000;
+          &:hover, &:focus, &:active {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}
+
+.home-page-title {
+  padding-top: 0;
+  margin-top: 0;
+  font-size: 3rem;
+  text-align: center;
+
+  @media screen and (min-width: $screen-sm-min) {
+    font-size: 6rem;
+  }
+
+  @media screen and (min-width: $screen-lg-min) {
+    font-size: 8rem;
+  }
+}
