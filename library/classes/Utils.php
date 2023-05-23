@@ -305,15 +305,20 @@ class Utils {
 	}
 
 	function get_map_tileurl() {
-		if ( $this->get_city() === 'helsinki' ) {
-			$tile_url = 'https://api.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}.png';
-		} elseif ( $this->get_city() === 'tallinn' ) {
-			$tile_url = 'https://b.tile.openstreetmap.org/{z}/{x}/{y}.png';
-		} else {
-			$tile_url = 'https://api.digitransit.fi/map/v1/hsl-map/{z}/{x}/{y}.png';
-		}
+        $tile_url = 'https://b.tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+        $api_key = $this->digitransit_api_key();
+        if ($api_key && $this->get_city() !== 'tallinn') {
+            $tile_url = "https://cdn.digitransit.fi/map/v2/hsl-map/{z}/{x}/{y}.png?digitransit-subscription-key={$api_key}";
+        }
 
 		return $tile_url;
+	}
+
+	function digitransit_api_key() {
+        $options = get_option( 'nattours_general_options' );
+
+        return $options['nattours_digitransit_api_key'] ?? '';
 	}
 
 	function get_social_media_links( $contactOptions = [] ) {
