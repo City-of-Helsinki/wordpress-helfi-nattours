@@ -103,7 +103,7 @@ EOT;
 add_filter( 'body_class', function ( $classes ) {
 	global $post;
 
-	if ( $post->post_type === 'location' ) {
+	if ( isset($post->post_type) && $post->post_type === 'location' ) {
 		$terms = get_the_terms( $post, 'location-city' );
 
 		if ( ! is_wp_error( $terms ) ) {
