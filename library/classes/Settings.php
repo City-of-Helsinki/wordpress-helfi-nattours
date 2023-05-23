@@ -140,6 +140,12 @@ class Settings {
 					'default' => '',
 					'type'    => 'file',
 				],
+				[
+					'name'    => __( 'Digitransit API key', TEXT_DOMAIN ),
+					'id'      => 'nattours_digitransit_api_key',
+					'default' => '',
+					'type'    => 'text',
+				],
 			]
 		];
 
