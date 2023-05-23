@@ -131,6 +131,4 @@ Add your custom WP template-files here.
 
 ## Support
 
-If you run into any trouble, ask ville.ristimaki@nordsoftware.com. He should know the correct answers. If not, you can always ask Niklas. He knows everything.
-
-![niklas](http://testi.in/niklas.gif "Niklas knows everything")
+If you run into any trouble, contact Nord Software. He should know the correct answers.
