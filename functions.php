@@ -257,10 +257,6 @@ add_filter( 'json_url_prefix', function () {
 /**
  * Move WP-templates to templates-folder for cleaner experience on dev
  */
-add_filter( 'stylesheet', function ( $stylesheet ) {
-    return dirname( $stylesheet );
-} );
-
 add_action( 'after_switch_theme', function () {
     $stylesheet = get_option( 'stylesheet' );
     if ( basename( $stylesheet ) !== 'templates' ) {
