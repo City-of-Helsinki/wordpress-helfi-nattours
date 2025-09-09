@@ -309,7 +309,7 @@ class Utils {
 
         $api_key = $this->digitransit_api_key();
         if ($api_key && $this->get_city() !== 'tallinn') {
-            $tile_url = "https://cdn.digitransit.fi/map/v2/hsl-map/{z}/{x}/{y}.png?digitransit-subscription-key={$api_key}";
+            $tile_url = "https://cdn.digitransit.fi/map/v3/hsl-map/{z}/{x}/{y}.png?digitransit-subscription-key={$api_key}";
         }
 
 		return $tile_url;
