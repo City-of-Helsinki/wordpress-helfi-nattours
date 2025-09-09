@@ -436,9 +436,18 @@ class Initialization {
                 'apache' ) !== false
         ) {
             if ( current_user_can( 'administrator' ) ) {
-                add_action( 'admin_notices', create_function( '',
-                    "echo '<div class=\"error\"><p>" . sprintf( __( 'Please make sure your <a href="%s">.htaccess</a> file is writable ',
-                        TEXT_DOMAIN ), admin_url( 'options-permalink.php' ) ) . "</p></div>';" ) );
+                add_action( 'admin_notices', function() {
+                    printf(
+                        '<div class="notice notice-error"><p>%s</p></div>',
+                        sprintf(
+                            wp_kses(
+                                __( 'Please make sure your <a href="%s">.htaccess</a> file is writable', TEXT_DOMAIN ),
+                                array( 'a' => array( 'href' => array() ) )
+                            ),
+                            esc_url( admin_url( 'options-permalink.php' ) )
+                        )
+                    );
+                } );
             }
         }
     }
